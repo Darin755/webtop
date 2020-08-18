@@ -1,6 +1,40 @@
-//https://www.w3schools.com/howto/howto_js_draggable.asp
-//Make the DIV element draggagle:
-dragElement(document.getElementById("window"));
+
+
+function open(name,url) {
+	var num = 0;
+	var ifm = document.createElement('div'); //div
+	while(document.getElementById(name+num) != null) { //find a unused num
+		num++;
+	}
+	name=name+num;	
+	ifm.setAttribute('id', name); // assign an id
+	ifm.setAttribute('class','window');
+document.body.appendChild(ifm);	
+	
+	var num = 0;
+	var ifmh = document.createElement('div');
+	ifmh.setAttribute('id', name+"header"); // assign an id
+	ifmh.setAttribute('class','windowheader');	
+	
+	ifmh.innerHTML = name;
+	
+	ifm.appendChild(ifmh); //add header
+	var ifr = document.createElement('iframe'); //iframe
+	ifr.setAttribute('class','resizeable');
+	ifr.setAttribute('src',url);
+	ifr.setAttribute('title',name);
+	ifm.appendChild(ifr); //add iframe
+
+	dragElement(document.getElementById(name)); //make is dragable
+
+	console.log("created window "+name);
+}
+
+
+
+
+
+//taken from https://www.w3schools.com/howto/howto_js_draggable.asp
 
 function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;

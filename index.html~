@@ -8,7 +8,11 @@
 
 <script>open("bing","https://www.bing.com");</script>
 
-
+<div class="window" id="window">
+  <div class="windowheader" id="windowheader">bing</div>
+	<iframe class="resizeable" src="https://www.bing.com" title="bing"></iframe>
+</div>
+<script>dragElement(document.getElementById("window"));</script>
 
 </body>
 

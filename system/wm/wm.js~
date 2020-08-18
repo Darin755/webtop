@@ -1,4 +1,6 @@
-
+function requestWindow(name, url) {
+		open(name, url);
+}
 
 function open(name,url) {
 	var num = 0;
@@ -18,13 +20,12 @@ document.body.appendChild(ifm);
 	
 	ifmh.innerHTML = name;
 	
-	
 	ifm.appendChild(ifmh); //add header
 	var ifr = document.createElement('iframe'); //iframe
 	ifr.setAttribute('class','resizeable');
 	ifr.setAttribute('src',url);
 	ifr.setAttribute('title',name);
-	ifmh.appendChild(ifr); //add iframe
+	ifm.appendChild(ifr); //add iframe
 
 	dragElement(document.getElementById(name)); //make is dragable
 

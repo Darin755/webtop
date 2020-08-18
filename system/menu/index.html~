@@ -3,8 +3,17 @@
 <link rel="stylesheet" href="../theme/theme.css">
 <script src="../wm/wm.js"></script>
 </head>
-<body>
-<button>menu</button>
+<body class="menu">
+<button type="button" Onclick="bing();">menu</button>
+
+<script>
+	function bing() {
+		requestWindow("bing","https://www.bing.com");
+	}
+
+</script>
+
+
 
 </body>
 

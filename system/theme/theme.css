@@ -1,6 +1,15 @@
+
+
 body {
-background: blue;;
+background-image: url(https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/afrc2020-0073-1.jpg);
 }
+
+.menu {
+	background: black;
+	border-color: darkblue;
+	
+}
+
 .window {
   position: absolute;
   z-index: 9;

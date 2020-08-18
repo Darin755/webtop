@@ -4,16 +4,22 @@
 <script src="system/wm/wm.js"></script>
 </head>
 <body>
-<iframe src="system/menu/index.html" width="100%" height="38" name="menu"></iframe>
+<iframe class="menu" src="system/menu/index.html" width="100%" height="38" name="menu"></iframe>
 
-<script>open("bing","https://www.bing.com");</script>
+<script>
+if (window.addEventListener) {
+    window.addEventListener("message", onMessage, false);        
+} 
+else if (window.attachEvent) {
+    window.attachEvent("onmessage", onMessage, false);
+}
 
-<div class="window" id="window">
-  <div class="windowheader" id="windowheader">bing</div>
-	<iframe class="resizeable" src="https://www.bing.com" title="bing"></iframe>
-</div>
-<script>dragElement(document.getElementById("window"));</script>
+function onMessage(event) {
+    var data = event.data;
+    open(data.name,data.url);
+}
+
+</script>
+
 
 </body>
-
-

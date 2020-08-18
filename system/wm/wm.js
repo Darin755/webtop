@@ -1,4 +1,9 @@
-
+function requestWindow(name, url) {
+		window.parent.postMessage({
+    'name': name,
+    'url' : url
+}, "*");
+}
 
 function open(name,url) {
 	var num = 0;

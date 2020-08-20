@@ -6,7 +6,22 @@ function request(name,type, other) {
 }, "*");
 }
 
-	
+function menu(opt) {
+	var x = document.getElementById("menu");
+	if(opt == "auto"){
+ 	 if (x.style.display === "none") {
+   	 x.style.display = "block";
+  	} else {
+ 	   x.style.display = "none";
+ 	 }
+ 	}
+ 	if(opt == "open"){
+ 		x.style.display = "block";
+ 	}
+ 	if(opt == "close"){
+ 		x.style.display = "none";
+ 	}
+}
 
 function closeit(name) {
 	var elm = document.getElementById(name);
@@ -15,6 +30,7 @@ function closeit(name) {
 
 
 function open(name,url,type) {
+	var cmd = "";
 	var num = 0;
 		while(document.getElementById(name+num) != null) { //find a unused num
 		num++;
@@ -25,16 +41,15 @@ function open(name,url,type) {
 		var ifm = document.createElement('div'); //div	
 		ifm.setAttribute('id', name); // assign an id
 		ifm.setAttribute('class','window');
-		var topcmd = "request('"+name+"','top','')";	
-		ifm.setAttribute('onmousedown',topcmd);
+		cmd = "request('"+name+"','top','')";	
+		ifm.setAttribute('onmousedown',cmd);
 		document.body.appendChild(ifm);	
-		
 		var ifmh = document.createElement('div');
 		ifmh.setAttribute('id', name+"header"); // assign an id
 		ifmh.setAttribute('class','windowheader');	
 	
-		var closecmd= "closeit('"+name+"')";
-		ifmh.innerHTML = name+"<button type='button' class='windowButtons' Onclick="+closecmd+">close</button>";
+		cmd= "closeit('"+name+"')";
+		ifmh.innerHTML = name+"<button type='button' class='windowButtons' Onclick="+cmd+">close</button>";
 	
 		ifm.appendChild(ifmh); //add header
 		var ifr = document.createElement('iframe'); //iframe
@@ -58,8 +73,8 @@ function open(name,url,type) {
 		ifmh.setAttribute('id', name+"header"); // assign an id
 		ifmh.setAttribute('class','windowheader');	
 	
-		var closecmd= "closeit('"+name+"')";
-		ifmh.innerHTML = "<button type='button' class='windowButtons' Onclick="+closecmd+">close</button>";
+		cmd= "closeit('"+name+"')";
+		ifmh.innerHTML = "<button type='button' class='windowButtons' Onclick="+cmd+">close</button>";
 	
 		ifm.appendChild(ifmh); //add header
 		var ifr = document.createElement('iframe'); //iframe
@@ -72,6 +87,7 @@ function open(name,url,type) {
 
 		console.log("created widget "+name);
 	}
+	cmd = "";
 }
 
 

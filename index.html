@@ -2,49 +2,14 @@
 <head>
 <link rel="stylesheet" href="system/theme/theme.css">
 <script src="system/wm/wm.js"></script>
+<script src="system/taskbar/task.js"></script>
 </head>
 <body>
-<iframe class="menu" src="system/menu/taskbar.html" width="100%" height="38" name="menu"></iframe>
+<iframe class="taskbar" src="system/taskbar/index.html" width="100%" height="38" name="taskbar"></iframe>
+<iframe class="hmenu" src="system/menu/index.html" id ="menu" name="menu"></iframe>
 
 
 
-
-<script>
-var ontop = ""
-if (window.addEventListener) {
-    window.addEventListener("message", onMessage, false);        
-} 
-else if (window.attachEvent) {
-    window.attachEvent("onmessage", onMessage, false);
-}
-
-function onMessage(event) {
-    var data = event.data;
-    
-    if(data.type == "window") {
-    	open(data.name,data.other,"window");
-    }
-    
-    if(data.type == "close") {
-    	closeit(data.name);
-    }
-    
-    if(data.type == "widget") {
-    	open(data.name,data.other,"widget");
-    }
-
-    if(data.type == "top") {
-		if(ontop != data.name){
-			document.getElementById(data.name).style.zIndex++;
-			ontop = data.name;
-			
-		}
-    	
-    }
-
-}
-
-</script>
 
 
 </body>

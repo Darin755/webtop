@@ -3,12 +3,12 @@
 <link rel="stylesheet" href="../theme/theme.css">
 <script src="../wm/wm.js"></script>
 </head>
-<body class="menu">
+<body class="start">
 <button type="button" Onclick="bing();">bing</button>
 
 <script>
 	function bing() {
-		requestNew("bing","window","https://www.bing.com");
+		request("bing","window","https://www.bing.com");
 	}
 
 </script>

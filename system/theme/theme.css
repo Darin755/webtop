@@ -4,26 +4,35 @@ body {
 background-image: url(https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/afrc2020-0073-1.jpg);
 }
 
-.menu {
+.taskbar {
 	background: black;
 	border-color: darkblue;
 	
 }
 
+.menu {
+	background: black;
+	border-color: darkblue;
+
+}
+
+.hmenu {
+	background: black;
+	border-color: darkblue;
+	display: none;
+}
+
 .window {
   position: absolute;
-  z-index: 9;
   background-color: #f1f1f1;
   text-align: center;
   border: 1px solid #d3d3d3;
-	z-index: auto;
   
 }
 
 .windowheader {
   padding: 10px;
   cursor: move;
-  z-index: 10;
   background-color: #2196F3;
   color: #fff;
 
@@ -31,7 +40,7 @@ background-image: url(https://www.nasa.gov/sites/default/files/styles/full_width
 
 .resizeable {
 	resize: both;
-
+	overflow: auto;
 }
 
 .windowButtons {

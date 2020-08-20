@@ -16,7 +16,7 @@ background-image: url(https://www.nasa.gov/sites/default/files/styles/full_width
   background-color: #f1f1f1;
   text-align: center;
   border: 1px solid #d3d3d3;
-
+	z-index: auto;
   
 }
 
@@ -33,3 +33,10 @@ background-image: url(https://www.nasa.gov/sites/default/files/styles/full_width
 	resize: both;
 
 }
+
+.windowButtons {
+	float: right;
+
+}
+
+

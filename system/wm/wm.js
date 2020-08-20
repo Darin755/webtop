@@ -1,38 +1,77 @@
-function requestWindow(name, url) {
+function request(name,type, other) {
 		window.parent.postMessage({
+    'type' : type,
     'name': name,
-    'url' : url
+    'other' : other
 }, "*");
 }
 
-function open(name,url) {
+	
+
+function closeit(name) {
+	var elm = document.getElementById(name);
+	elm.remove();
+}
+
+
+function open(name,url,type) {
 	var num = 0;
-	var ifm = document.createElement('div'); //div
-	while(document.getElementById(name+num) != null) { //find a unused num
+		while(document.getElementById(name+num) != null) { //find a unused num
 		num++;
 	}
-	name=name+num;	
-	ifm.setAttribute('id', name); // assign an id
-	ifm.setAttribute('class','window');
-document.body.appendChild(ifm);	
+	name=name+num;
 	
-	var num = 0;
-	var ifmh = document.createElement('div');
-	ifmh.setAttribute('id', name+"header"); // assign an id
-	ifmh.setAttribute('class','windowheader');	
+	if(type == "window") {
+		var ifm = document.createElement('div'); //div	
+		ifm.setAttribute('id', name); // assign an id
+		ifm.setAttribute('class','window');
+		var topcmd = "request('"+name+"','top','')";	
+		ifm.setAttribute('onmousedown',topcmd);
+		document.body.appendChild(ifm);	
+		
+		var ifmh = document.createElement('div');
+		ifmh.setAttribute('id', name+"header"); // assign an id
+		ifmh.setAttribute('class','windowheader');	
 	
-	ifmh.innerHTML = name;
+		var closecmd= "closeit('"+name+"')";
+		ifmh.innerHTML = name+"<button type='button' class='windowButtons' Onclick="+closecmd+">close</button>";
 	
-	ifm.appendChild(ifmh); //add header
-	var ifr = document.createElement('iframe'); //iframe
-	ifr.setAttribute('class','resizeable');
-	ifr.setAttribute('src',url);
-	ifr.setAttribute('title',name);
-	ifm.appendChild(ifr); //add iframe
+		ifm.appendChild(ifmh); //add header
+		var ifr = document.createElement('iframe'); //iframe
+		ifr.setAttribute('class','resizeable');
+		ifr.setAttribute('src',url);
+		ifr.setAttribute('title',name);
+		ifm.appendChild(ifr); //add iframe
 
-	dragElement(document.getElementById(name)); //make is dragable
+		dragElement(document.getElementById(name)); //make is dragable
 
-	console.log("created window "+name);
+		console.log("created window "+name);
+	}
+	if(type == "widget"){
+		var ifm = document.createElement('div'); //div	
+		ifm.setAttribute('id', name); // assign an id
+		ifm.setAttribute('class','window');
+		
+		document.body.appendChild(ifm);	
+	
+		var ifmh = document.createElement('div');
+		ifmh.setAttribute('id', name+"header"); // assign an id
+		ifmh.setAttribute('class','windowheader');	
+	
+		var closecmd= "closeit('"+name+"')";
+		ifmh.innerHTML = "<button type='button' class='windowButtons' Onclick="+closecmd+">close</button>";
+	
+		ifm.appendChild(ifmh); //add header
+		var ifr = document.createElement('iframe'); //iframe
+		ifr.setAttribute('class','resizeable');
+		ifr.setAttribute('src',url);
+		ifr.setAttribute('title',name);
+		ifm.appendChild(ifr); //add iframe
+
+		dragElement(document.getElementById(name)); //make is dragable
+
+		console.log("created widget "+name);
+	}
 }
 
 

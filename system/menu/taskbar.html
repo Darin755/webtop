@@ -4,11 +4,14 @@
 <script src="../wm/wm.js"></script>
 </head>
 <body class="menu">
+<button type="button" Onclick="menu();">menu</button>
 <button type="button" Onclick="bing();">bing</button>
-
 <script>
+	function menu() {
+		request("menu","widget","system/menu/menu.html");
+	}
 	function bing() {
-		requestNew("bing","window","https://www.bing.com");
+		request("bing","window","https://bing.com");
 	}
 
 </script>

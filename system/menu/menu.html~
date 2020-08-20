@@ -8,7 +8,7 @@
 
 <script>
 	function bing() {
-		requestWindow("bing","https://www.bing.com");
+		requestNew("bing","window","https://www.bing.com");
 	}
 
 </script>
@@ -16,4 +16,3 @@
 
 
 </body>
-

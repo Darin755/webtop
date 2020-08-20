@@ -5,8 +5,8 @@ background-image: url(https://www.nasa.gov/sites/default/files/styles/full_width
 }
 
 .menu {
-	background: black;\
-	
+	background: black;
+	border-color: darkblue;
 	
 }
 
@@ -33,3 +33,10 @@ background-image: url(https://www.nasa.gov/sites/default/files/styles/full_width
 	resize: both;
 
 }
+
+.windowButtons {
+	float: right;
+
+}
+
+

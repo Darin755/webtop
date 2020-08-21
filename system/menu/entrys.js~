@@ -1,8 +1,0 @@
-//entrys for main menu
-var entrys = [
-{name: "bing", url:"https://www.bing.com"},
-{name: "caculator", url:"https://www.desmos.com/scientific"},
-{name: "vm in browser", url:"https://copy.sh/v86/"},
-{name: "clock", url:"apps/clock/index.html"},
-{name: "terminal", url:"apps/terminal/index.html"}
-];

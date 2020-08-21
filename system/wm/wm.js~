@@ -55,9 +55,7 @@ function open(name,url,type) {
 	
 		cmd= "closeit('"+name+"')";
 		ifmh.innerHTML = name+"<button type='button' class='windowButtons' Onclick="+cmd+">close</button>";
-		cmd = "reload('"+name+"')";
-		ifmh.innerHTML = ifmh.innerHTML+"<button type='button' class='windowButtons' Onclick="+cmd+">reload</button>";		
-		
+	
 		ifm.appendChild(ifmh); //add header
 		var ifr = document.createElement('iframe'); //iframe
 		ifr.setAttribute('class','resizeable');

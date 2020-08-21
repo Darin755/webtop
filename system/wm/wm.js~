@@ -43,8 +43,6 @@ function open(name,url,type) {
 		ifm.setAttribute('class','window');
 		cmd = "request('"+name+"','top','')";	
 		ifm.setAttribute('onmousedown',cmd);
-		cmd = "menu('close')";
-		ifm.setAttribute('onclick',cmd);
 		document.body.appendChild(ifm);	
 		var ifmh = document.createElement('div');
 		ifmh.setAttribute('id', name+"header"); // assign an id

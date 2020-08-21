@@ -16,6 +16,7 @@ function onMessage(event) {
     
     if(data.type == "close") {
     	closeit(data.name);
+    	
     }
     
     if(data.type == "widget") {
@@ -28,7 +29,7 @@ function onMessage(event) {
 			document.getElementById(data.name).style.zIndex = z;
 			ontop = data.name;
 			z = document.getElementById(data.name).style.zIndex;
-			console.log(document.getElementById(data.name).style.zIndex);
+			
 		}   	
     	
     }
@@ -38,4 +39,5 @@ function onMessage(event) {
 	} 
 
 }
+
 

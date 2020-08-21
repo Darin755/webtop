@@ -3,6 +3,7 @@
 <head>
 
 <link rel="stylesheet" href="../../system/theme/theme.css">
+<script src="../../system/wm/wm.js"></script>
 
 <script>
 function startTime() {

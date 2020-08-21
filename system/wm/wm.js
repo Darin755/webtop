@@ -30,6 +30,7 @@ function closeit(name) {
 
 
 function open(name,url,type) {
+	menu("close");
 	var cmd = "";
 	var num = 0;
 		while(document.getElementById(name+num) != null) { //find a unused num

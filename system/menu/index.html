@@ -4,15 +4,17 @@
 <script src="../wm/wm.js"></script>
 </head>
 <body class="menu">
-<button type="button" Onclick="bing();">bing</button>
 
+<script src="entrys.js"></script>
 <script>
-	function bing() {
-		request("bing","window","https://www.bing.com");
-	}
-
+for(var i = 0;i < entrys.length;i++){
+	var btn = document.createElement("button");
+	btn.setAttribute('id',entrys[i].name);
+	btn.setAttribute("type","button");
+	btn.setAttribute('onclick',"request('"+entrys[i].name+"','window','"+entrys[i].url+"')");	
+	btn.innerHTML = entrys[i].name;
+	document.body.appendChild(btn);
+}
 </script>
-
-
 
 </body>

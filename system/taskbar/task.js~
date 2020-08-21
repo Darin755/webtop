@@ -12,10 +12,12 @@ function onMessage(event) {
     
     if(data.type == "window") {
     	open(data.name,data.other,"window");
+    	
     }
     
     if(data.type == "close") {
     	closeit(data.name);
+    	
     }
     
     if(data.type == "widget") {
@@ -24,10 +26,11 @@ function onMessage(event) {
 
     if(data.type == "top") {
 		if(ontop != data.name){
-			document.getElementById(data.name).style.zIndex = z + 1;
+			z++;
+			document.getElementById(data.name).style.zIndex = z;
 			ontop = data.name;
 			z = document.getElementById(data.name).style.zIndex;
-			console.log(document.getElementById(data.name).style.zIndex);
+			
 		}   	
     	
     }
@@ -37,4 +40,5 @@ function onMessage(event) {
 	} 
 
 }
+
 

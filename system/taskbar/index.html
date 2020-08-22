@@ -4,13 +4,40 @@
 <script src="../wm/wm.js"></script>
 </head>
 <body class="taskbar">
+<div id=gig_holder>
 <button type="button" Onclick="omenu();">menu</button>
+
+</div>
+
+<script src="gigs.js"></script>
 <script>
+for(var i = 0;i < entrys.length;i++){
+	newGig(entrys[i].name,"../../"+entrys[i].url,entrys[i].width);
+}
+
 	function omenu() {
 		request("","menu","auto");
 	}
+	
+if (window.addEventListener) {
+    window.addEventListener("message", onMessage, false);        
+} 
+else if (window.attachEvent) {
+    window.attachEvent("onmessage", onMessage, false);
+}
+
+function onMessage(event) {
+var data = event.data;
 
 
+
+if(data.type == 'gig'){
+	newGig(data.name,data.url,data.width);
+	
+}
+
+
+}
 </script>
 
 

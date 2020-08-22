@@ -37,7 +37,17 @@ function onMessage(event) {
 	if(data.type == "menu") {
 		menu(data.other);
 	} 
+	
+		if(data.type == "gig") {
+			requestGig(data.name,data.other,data.other2);
+
+	} 
 
 }
+
+
+
+
+
 
 

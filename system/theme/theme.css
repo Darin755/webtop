@@ -7,6 +7,9 @@ body {
 
 .main-body {
 	background-image: url(https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/afrc2020-0073-1.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size: cover;
 }
 
 .taskbar {
@@ -53,4 +56,9 @@ body {
 
 }
 
+.gigs {
+	float:right;
+	border-style:solid;
+	border-width: 0px 1px;
 
+}

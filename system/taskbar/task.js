@@ -35,14 +35,13 @@ function onMessage(event) {
     }
     
 	if(data.type == "menu") {
-		menu(data.other);
+		menu(data.name,data.other,data.other2);
 	} 
 	
-		if(data.type == "gig") {
-			requestGig(data.name,data.other,data.other2);
-
+	if(data.type == "gig") {
+		requestGig(data.name,data.other,data.other2);
 	} 
-
+	
 }
 
 

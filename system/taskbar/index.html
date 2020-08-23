@@ -14,10 +14,6 @@
 for(var i = 0;i < entrys.length;i++){
 	newGig(entrys[i].name,"../../"+entrys[i].url,entrys[i].width);
 }
-
-	function omenu() {
-		request("","menu","auto");
-	}
 	
 if (window.addEventListener) {
     window.addEventListener("message", onMessage, false);        
@@ -34,9 +30,15 @@ var data = event.data;
 if(data.type == 'gig'){
 	newGig(data.name,data.url,data.width);
 	
+} else {
+window.parent.postMessage(data, "*");
+
 }
 
+}
 
+function omenu() {
+	request("menu","menu","system/menu/index.html","auto");
 }
 </script>
 

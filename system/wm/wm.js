@@ -7,6 +7,29 @@ function request(name,type, other,other2) {
 }, "*");
 }
 
+function findName(name) {
+	var num = 0;
+	while(document.getElementById(name+num) != null) { //find a unused num
+		num++;
+	}
+	return name+num;
+}
+
+function reload(name){
+	document.getElementById(name+"-iframe").src = document.getElementById(name+"-iframe").src;
+}
+
+function newMenu(name,url) {
+	var frame = document.createElement('iframe');
+	frame.setAttribute('class','hmenu');
+	frame.setAttribute('id',url);
+	frame.setAttribute('src',url);
+	frame.setAttribute('name','name');
+	document.body.appendChild(frame);
+	console.log("created menu "+name);
+	return frame;
+}
+
 function requestGig(name,url,width) {
 window.frames['taskbar'].postMessage({
     'type' : 'gig',
@@ -16,17 +39,8 @@ window.frames['taskbar'].postMessage({
 }, "*");
 }
 
-function reload(name){
-	document.getElementById(name+"-iframe").src = document.getElementById(name+"-iframe").src;
-}
-
 function newGig(name,url,width) {
-	
-var num= 0;
-		while(document.getElementById(name+num) != null) { //find a unused num
-		num++;
-	}
-	var name=name+num;	
+	name = findName(name);
 	
 	var frame = document.createElement('iframe');
 	frame.setAttribute('class','gigs');
@@ -37,27 +51,32 @@ var num= 0;
 		frame.setAttribute('width',width)
 		
 	}else {
-		return "too long"		
+		return "width too long"		
 	}
 	document.getElementById("gig_holder").appendChild(frame);
-	console.log("created gig"+name);
+	console.log("created gig "+name);
 }
 
-function menu(opt) {
-	var x = document.getElementById("menu");
-	if(opt == "auto"){
- 	 if (x.style.display === "none") {
-   	 x.style.display = "block";
-  	} else {
- 	   x.style.display = "none";
- 	 }
- 	}
- 	if(opt == "open"){
- 		x.style.display = "block";
- 	}
- 	if(opt == "close"){
- 		x.style.display = "none";
- 	}
+function menu(name,url,opt) {
+	if(document.getElementById(url) == null){
+		var x= newMenu(name,url);
+		x.style.display = "block";
+	}else{
+		var x = document.getElementById(url);
+		if(opt == "auto"){
+ 	 		if (x.style.display === "none") {
+   	 		x.style.display = "block";
+  			} else {
+ 	   		x.style.display = "none";
+ 	 		}
+ 		}
+ 		if(opt == "open"){
+ 			x.style.display = "block";
+ 		}
+ 		if(opt == "close"){
+ 			x.style.display = "none";
+ 		}
+ }
 }
 
 function closeit(name) {
@@ -69,11 +88,7 @@ function closeit(name) {
 function open(name,url,type) {
 	menu("close");
 	var cmd = "";
-	var num = 0;
-		while(document.getElementById(name+num) != null) { //find a unused num
-		num++;
-	}
-	name=name+num;
+	name = findName(name);		
 	
 	if(type == "window") {
 		var ifm = document.createElement('div'); //div	

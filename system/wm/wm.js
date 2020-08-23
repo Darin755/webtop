@@ -24,7 +24,7 @@ function newMenu(name,url) {
 	frame.setAttribute('class','hmenu');
 	frame.setAttribute('id',url);
 	frame.setAttribute('src',url);
-	frame.setAttribute('name','name');
+	frame.setAttribute('name',name);
 	document.body.appendChild(frame);
 	console.log("created menu "+name);
 	return frame;
@@ -58,25 +58,32 @@ function newGig(name,url,width) {
 }
 
 function menu(name,url,opt) {
-	if(document.getElementById(url) == null){
-		var x= newMenu(name,url);
-		x.style.display = "block";
-	}else{
-		var x = document.getElementById(url);
-		if(opt == "auto"){
- 	 		if (x.style.display === "none") {
-   	 		x.style.display = "block";
-  			} else {
- 	   		x.style.display = "none";
- 	 		}
- 		}
- 		if(opt == "open"){
- 			x.style.display = "block";
- 		}
- 		if(opt == "close"){
- 			x.style.display = "none";
- 		}
- }
+	if(name == "closeall"){
+		var slides = document.getElementsByClassName("hmenu");
+		for (var i = 0; i < slides.length; i++) {
+  			slides.item(i).style.display = "none";
+		}
+	} else {
+		if(document.getElementById(url) == null){
+			var x= newMenu(name,url);
+			x.style.display = "block";
+		}else{
+			var x = document.getElementById(url);
+			if(opt == "auto"){
+ 	 			if (x.style.display === "none") {
+   	 			x.style.display = "block";
+  				} else {
+ 	   			x.style.display = "none";
+ 	 			}
+ 			}
+ 			if(opt == "open"){
+ 				x.style.display = "block";
+ 			}
+ 			if(opt == "close"){
+ 				x.style.display = "none";
+ 			}
+		}	
+	}
 }
 
 function closeit(name) {
@@ -86,7 +93,7 @@ function closeit(name) {
 
 
 function open(name,url,type) {
-	menu("close");
+	menu("closeall");
 	var cmd = "";
 	name = findName(name);		
 	

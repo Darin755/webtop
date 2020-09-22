@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="../../system/theme/theme.css">
+<script src="../../system/wm/wm.js"></script>
+</head>
+<body>
+<p>name</p>
+<input id=name type=text </input>
+<p>url</p>
+<input id=url type=text></input>
+<p>type</p>
+<select id=type>
+<option value=window>window</option>
+<option value=widget>widget</option>
+</select>
+<button type="button" onclick="go()">open</button>
+
+<script>
+function go() {
+
+	console.log(document.getElementById("name").value+" "+document.getElementById("type").value+" "+document.getElementById("url").value);
+	request(document.getElementById("name").value,document.getElementById("type").value,document.getElementById("url").value);
+}
+
+</script>
+</body>

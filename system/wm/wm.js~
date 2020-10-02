@@ -30,20 +30,20 @@ function newMenu(name,url) {
 	return frame;
 }
 
-function requestDocklet(name,url,width) {
+function requestGig(name,url,width) {
 window.frames['taskbar'].postMessage({
-    'type' : 'docklet',
+    'type' : 'gig',
     'name': name,
     'url' : url,
     'width' : width
 }, "*");
 }
 
-function newDocklet(name,url,width) {
+function newGig(name,url,width) {
 	name = findName(name);
 	
 	var frame = document.createElement('iframe');
-	frame.setAttribute('class','docklets');
+	frame.setAttribute('class','gigs');
 	frame.setAttribute('id',name);
 	frame.setAttribute('src',url);
 	frame.setAttribute('height','37');
@@ -53,8 +53,8 @@ function newDocklet(name,url,width) {
 	}else {
 		return "width too long"		
 	}
-	document.getElementById("docklet_holder").appendChild(frame);
-	console.log("created docklet "+name);
+	document.getElementById("gig_holder").appendChild(frame);
+	console.log("created gig "+name);
 }
 
 function menu(name,url,opt) {

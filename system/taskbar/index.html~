@@ -4,15 +4,15 @@
 <script src="../wm/wm.js"></script>
 </head>
 <body class="taskbar">
-<div id=docklet_holder>
+<div id=gig_holder>
 <button type="button" Onclick="omenu();">menu</button>
 
 </div>
 
-<script src="docklets.js"></script>
+<script src="gigs.js"></script>
 <script>
 for(var i = 0;i < entrys.length;i++){
-	newDocklet(entrys[i].name,"../../"+entrys[i].url,entrys[i].width);
+	newGig(entrys[i].name,"../../"+entrys[i].url,entrys[i].width);
 }
 	
 if (window.addEventListener) {
@@ -27,8 +27,8 @@ var data = event.data;
 
 
 
-if(data.type == 'docklet'){
-	newDocklet(data.name,data.url,data.width);
+if(data.type == 'gig'){
+	newGig(data.name,data.url,data.width);
 	
 } else {
 window.parent.postMessage(data, "*");

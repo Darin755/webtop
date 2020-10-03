@@ -38,15 +38,9 @@ function onMessage(event) {
 		menu(data.name,data.other,data.other2);
 	} 
 	
-	if(data.type == "gig") {
-		requestGig(data.name,data.other,data.other2);
+	if(data.type == "docklet") {
+		requestDocklet(data.name,data.other,data.other2);
 	} 
 	
 }
-
-
-
-
-
-
 

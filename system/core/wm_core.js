@@ -1,61 +1,3 @@
-function request(name,type, other,other2) {
-		window.parent.postMessage({
-    'type' : type,
-    'name': name,
-    'other' : other,
-    'other2' : other2,
-}, "*");
-}
-
-function findName(name) {
-	var num = 0;
-	while(document.getElementById(name+num) != null) { //find a unused num
-		num++;
-	}
-	return name+num;
-}
-
-function reload(name){
-	document.getElementById(name+"-iframe").src = document.getElementById(name+"-iframe").src;
-}
-
-function newMenu(name,url) {
-	var frame = document.createElement('iframe');
-	frame.setAttribute('class','hmenu');
-	frame.setAttribute('id',url);
-	frame.setAttribute('src',url);
-	frame.setAttribute('name',name);
-	document.body.appendChild(frame);
-	console.log("created menu "+name);
-	return frame;
-}
-
-function requestGig(name,url,width) {
-window.frames['taskbar'].postMessage({
-    'type' : 'gig',
-    'name': name,
-    'url' : url,
-    'width' : width
-}, "*");
-}
-
-function newGig(name,url,width) {
-	name = findName(name);
-	
-	var frame = document.createElement('iframe');
-	frame.setAttribute('class','gigs');
-	frame.setAttribute('id',name);
-	frame.setAttribute('src',url);
-	frame.setAttribute('height','37');
-	if(width<222){
-		frame.setAttribute('width',width)
-		
-	}else {
-		return "width too long"		
-	}
-	document.getElementById("gig_holder").appendChild(frame);
-	console.log("created gig "+name);
-}
 
 function menu(name,url,opt) {
 	if(name == "closeall"){
@@ -86,11 +28,33 @@ function menu(name,url,opt) {
 	}
 }
 
+function newMenu(name,url) {
+	var frame = document.createElement('iframe');
+	frame.setAttribute('class','hmenu');
+	frame.setAttribute('id',url);
+	frame.setAttribute('src',url);
+	frame.setAttribute('name',name);
+	document.body.appendChild(frame);
+	console.log("created menu "+name);
+	return frame;
+}
+
 function closeit(name) {
 	var elm = document.getElementById(name);
 	elm.remove();
 }
 
+function reload(name){
+	document.getElementById(name+"-iframe").src = document.getElementById(name+"-iframe").src;
+}
+
+function findName(name) {
+	var num = 0;
+	while(document.getElementById(name+num) != null) { //find a unused num
+		num++;
+	}
+	return name+num;
+}
 
 function open(name,url,type) {
 	menu("closeall");

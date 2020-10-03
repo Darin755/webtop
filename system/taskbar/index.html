@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <head>
-<link rel="stylesheet" href="../theme/theme.css">
-<script src="../wm/wm.js"></script>
+<link rel="stylesheet" href="../config/theme.css">
+<script src="../define/define.js"></script>
+<script src="task.js"></script>
 </head>
 <body class="taskbar">
 <div id=docklet_holder>
@@ -9,7 +10,7 @@
 
 </div>
 
-<script src="docklets.js"></script>
+<script src="../config/docklets.js"></script>
 <script>
 for(var i = 0;i < entrys.length;i++){
 	newDocklet(entrys[i].name,"../../"+entrys[i].url,entrys[i].width);

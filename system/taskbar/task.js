@@ -1,52 +1,25 @@
-var ontop = "";
-var z = 0;
-if (window.addEventListener) {
-    window.addEventListener("message", onMessage, false);        
-} 
-else if (window.attachEvent) {
-    window.attachEvent("onmessage", onMessage, false);
+function newDocklet(name,url,width) {
+	name = findName(name);
+	
+	var frame = document.createElement('iframe');
+	frame.setAttribute('class','docklets');
+	frame.setAttribute('id',name);
+	frame.setAttribute('src',url);
+	frame.setAttribute('height','37');
+	if(width<222){
+		frame.setAttribute('width',width)
+		
+	}else {
+		return "width too long"		
+	}
+	document.getElementById("docklet_holder").appendChild(frame);
+	console.log("created docklet "+name);
 }
 
-function onMessage(event) {
-    var data = event.data;
-    
-    if(data.type == "window") {
-    	open(data.name,data.other,"window");
-    }
-    
-    if(data.type == "close") {
-    	closeit(data.name);
-    	
-    }
-    
-    if(data.type == "widget") {
-    	open(data.name,data.other,"widget");
-    }
-
-    if(data.type == "top") {
-		if(ontop != data.name){
-			z++;
-			document.getElementById(data.name).style.zIndex = z;
-			ontop = data.name;
-			z = document.getElementById(data.name).style.zIndex;
-			
-		}   	
-    	
-    }
-    
-	if(data.type == "menu") {
-		menu(data.name,data.other,data.other2);
-	} 
-	
-	if(data.type == "docklet") {
-		requestDocklet(data.name,data.other,data.other2);
-	} 
-	
+function findName(name) {
+	var num = 0;
+	while(document.getElementById(name+num) != null) { //find a unused num
+		num++;
+	}
+	return name+num;
 }
-
-
-
-
-
-
-

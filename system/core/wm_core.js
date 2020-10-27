@@ -44,6 +44,10 @@ function closeit(name) {
 	elm.remove();
 }
 
+function itclose(name) {
+	request(name,"close");	
+}
+
 function reload(name){
 	document.getElementById(name+"-iframe").src = document.getElementById(name+"-iframe").src;
 }
@@ -72,7 +76,7 @@ function open(name,url,type) {
 		ifmh.setAttribute('id', name+"header"); // assign an id
 		ifmh.setAttribute('class','windowheader');	
 	
-		cmd= "closeit('"+name+"')";
+		cmd= "itclose('"+name+"')";
 		ifmh.innerHTML = name+"<button type='button' class='windowButtons' Onclick="+cmd+">close</button>";
 		cmd = "reload('"+name+"')";
 		ifmh.innerHTML = ifmh.innerHTML+"<button type='button' class='windowButtons' Onclick="+cmd+">reload</button>";		
@@ -88,6 +92,9 @@ function open(name,url,type) {
 		dragElement(document.getElementById(name)); //make is dragable
 
 		console.log("created window "+name);
+
+		return name;		
+		
 	}
 	if(type == "widget"){
 		var ifm = document.createElement('div'); //div	
@@ -119,7 +126,20 @@ function open(name,url,type) {
 	return name;
 }
 
+function requestDocklet(name,url,width) {
+window.frames['taskbar'].postMessage({
+    'type' : 'docklet',
+    'name': name,
+    'url' : url,
+    'width' : width
+}, "*");
+}
 
+
+
+function reload(name){
+	document.getElementById(name+"-iframe").src = document.getElementById(name+"-iframe").src;
+}
 
 
 

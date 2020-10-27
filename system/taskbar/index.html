@@ -5,10 +5,11 @@
 <script src="task.js"></script>
 </head>
 <body class="taskbar">
-<div id=docklet_holder>
-<button type="button" Onclick="omenu();">menu</button>
-
+<div>
+<button type="button" class="menub" Onclick="omenu();">menu</button>
+<p id="tasks" class="tasks"></p>
 </div>
+<div id=docklet_holder class="docklet_holder"></div>
 
 <script src="../config/docklets.js"></script>
 <script>
@@ -30,7 +31,8 @@ var data = event.data;
 
 if(data.type == 'docklet'){
 	newDocklet(data.name,data.url,data.width);
-	
+} else if(data.type == "updateTaskbar") {
+	document.getElementById("tasks").innerHTML = data.name;
 } else {
 window.parent.postMessage(data, "*");
 

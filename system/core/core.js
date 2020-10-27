@@ -1,5 +1,5 @@
-var ontop = "";
-var z = 0;
+var wins = [];
+
 if (window.addEventListener) {
     window.addEventListener("message", onMessage, false);        
 } 
@@ -11,12 +11,15 @@ function onMessage(event) {
     var data = event.data;
     
     if(data.type == "window") {
-    	open(data.name,data.other,"window");
+    	wins.unshift(open(data.name,data.other,"window"));
+    	updateTaskbar();
     }
     
     if(data.type == "close") {
     	closeit(data.name);
-    	
+    	removeWin(data.name);
+    	updateTaskbar();
+    	console.log("closed "+data.name);
     }
     
     if(data.type == "widget") {
@@ -24,11 +27,9 @@ function onMessage(event) {
     }
 
     if(data.type == "top") {
-		if(ontop != data.name){
-			z++;
-			document.getElementById(data.name).style.zIndex = z;
-			ontop = data.name;
-			z = document.getElementById(data.name).style.zIndex;
+		if(wins[0] != data.name){
+			winTop(data.name);
+			console.log("gfd");
 			
 		}   	
     	
@@ -44,3 +45,35 @@ function onMessage(event) {
 	
 }
 
+function removeWin(name) { 
+	for(var i = 0;i<=wins.length-1;i++){
+		if(wins[i] == name){
+			wins.splice(i,1);	
+		}	
+	
+	}
+}
+
+function winTop(name){
+	removeWin(name);
+	wins.unshift(name);
+	for(var i = 0;i<=wins.length-1;i++){
+		document.getElementById(wins[i]).style.zIndex = (wins.length-1) - i;
+	}
+	updateTaskbar();
+}
+
+function updateTaskbar() {
+window.frames['taskbar'].postMessage({
+    'type' : 'updateTaskbar',
+    'name': getWindows(),
+}, "*");	
+}
+
+function getWindows() {
+	str=" ";
+	for(var i = 0;i<=wins.length-1;i++){
+		str=str+wins[i]+" ";
+	}
+	return str;	
+}

@@ -29,7 +29,6 @@ function onMessage(event) {
     if(data.type == "top") {
 		if(wins[0] != data.name){
 			winTop(data.name);
-			console.log("gfd");
 			
 		}   	
     	
@@ -43,6 +42,10 @@ function onMessage(event) {
 		requestDocklet(data.name,data.other,data.other2);
 	} 
 	
+	if(data.type == "fullscreen") {
+		document.documentElement.requestFullscreen();
+		console.log("going fullscreen");
+	}
 }
 
 function removeWin(name) { 

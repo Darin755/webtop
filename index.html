@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <head>
-<link rel="stylesheet" href="system/config/theme.css">
-<script src="system/core/wm_core.js"></script>
-<script src="system/core/core.js"></script>
-<script src="system/define/define.js"></script>
 </head>
-<body class="main-body">
-<iframe id = "taskbar" class="taskbar" src="system/taskbar/index.html" width="100%" height="45" name="taskbar"></iframe>
+<body>
+<iframe src="iframe.html"></iframe>
 
-<script src="system/config/autostart.js"></script>
+<iframe src="iframe2.html"></iframe>
 
+<script src="core.js"></script>
+<script type="text/javascript">
+
+addCommand("incoming_random",function () {
+    event.source.window.postMessage({
+    data: Math.round(event.data.data*100), //convert to int
+    type: "random_int"
+    }, '*')
+});
+</script>
 
 
 </body>

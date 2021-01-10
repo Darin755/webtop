@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+<script src="lib/lib_core.js"></script>
+</head>
+<body>
+<p id="stat">click the button</p>
+<p id="win-id"></p>
+<button onclick="set()">set</button>
+<script src="lib/lib_core.js"></script>
+<script type="text/javascript" >
+setupPID("sender");
+
+addCommand("new_pid",function () {
+	document.getElementById("win-id").innerHTML = "window id: "+event.data.data;
+});
+
+addCommand("random_int",function () {
+	document.getElementById("stat").innerHTML = event.data.data;    
+   window.top.postMessage({
+		type: "sendTo",
+		data: event.data.data,
+		dest: "receiver",
+		isName: true,
+	}, '*');
+});
+
+
+function set() {
+window.top.postMessage({
+type: "incoming_random",
+status: 0,
+data: Math.random(),
+}, '*');
+}
+</script>
+</body>

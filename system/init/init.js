@@ -16,7 +16,7 @@ function init() {
 				window.stop();			
 			} else if (event.data.data.type == "start") {
 				startProcess(event.data.data.path);
-			} else if(event.data.data.type == "stop") {
+			} else if(event.data.data.type == "kill") {
 				stopProcess(event.data.data.pid);
 			}
 		}, false);

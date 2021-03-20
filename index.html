@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <head>
 <script src="system/init/init.js"></script>
+<script src="system/display/display.js"></script>
 </head>
 <body>
-<p id="show"></p>
+
 <script type="text/javascript">
-document.getElementById("show").innerHTML = "none";
+
 if(init()) {
-	registerCommand("show",function (event) {
-		if(event.data.data != undefined) {
-			document.getElementById("show").innerHTML = event.data.data;
-		} else {
-			document.getElementById("show").innerHTML = event.data;
-		}
-	});
-	startProcess("apps/count/count.js");
+	initScreen();
+	startProcess("apps/eyes/eyes.js");
 }
 
 </script>

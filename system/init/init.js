@@ -41,6 +41,9 @@ function startProcess(path) {
 function stopProcess(pid) {
 	proc[pid].terminate;
 	proc.splice(pid,1);
+	if(typeof(removeApp) == "function") {
+		removeApp(proc[pid]);	
+	}
 }
 
 

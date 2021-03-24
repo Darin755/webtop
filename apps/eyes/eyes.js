@@ -9,6 +9,7 @@ postMessage({
 postMessage({
 	type: "addElem",
 	elemType: "img",
+	elemName: "eyes",
 	x: 0,
 	y: 0,
 	attributes: [{name: "src", value: "apps/eyes/eyes.png"},{name: "alt", value: "eyes"}]

@@ -2,6 +2,7 @@ var screen = [];
 
 function initScreen() {
 	var srn = document.createElement("DIV");
+	srn.setAttribute("name", "screen");
 	srn.setAttribute("id","screen");
 	document.body.appendChild(srn);
 	registerCommand("addApp",function (event) {
@@ -9,11 +10,16 @@ function initScreen() {
 	
 	});
 	registerCommand("addElem", function (event) {
-		addElement(event.source, event.data.elemType, event.data.elemName, event.data.x, event.data.y, event.data.attributes);	
+		addElement(event.source, event.data.elemType, event.data.elemName, event.data.parent, event.data.x, event.data.y, event.data.attributes);	
 	});
 	registerCommand("delElem", function(event){
 		delElem(event.source, event.data.elemName);
 	}); 
+	registerCommand("modElem", function(event) {
+		modElement(event.source, event.data.name, event.data.parent, event.data.attributes);
+	});
+	
+	
 }
 
 function addApp(startingX, startingY, endingX, endingY, source) {
@@ -56,12 +62,11 @@ function removeApp(source) {
 	}
 }
 
-function addElement(source, elementType, name, x, y, attibutes) {
+function addElement(source, elementType, name, parent, x, y, attibutes) {
 	for(var i = 0;i<screen.length;i++) {
 		if(screen[i].source == source) {
 			if(screen[i].startingX<=x&&screen[i].startingY<=y&&screen[i].endingX>=x&&screen[i].endingY>=y) {
-				screen[i].elements[screen[i].elements.length] = createElem(elementType, name, x, y, attibutes);	
-				break;
+				screen[i].elements[screen[i].elements.length] = createElem(elementType, name, x, y, attibutes, i, parent);
 			}	else {
 				//bad
 				return -2;			
@@ -73,7 +78,7 @@ function addElement(source, elementType, name, x, y, attibutes) {
 	
 }
 
-function  createElem(type, name, x, y, attributes) {
+function  createElem(type, name, x, y, attributes, index, parent) {
 	var elem = document.createElement(type);
 	for (var i = 0;i<attributes.length;i++) {
 		elem.setAttribute(attributes[i].name,attributes[i].value);
@@ -83,8 +88,55 @@ function  createElem(type, name, x, y, attributes) {
 	elem.style.left = x;
 	elem.style.top = y;
 	elem.setAttribute("id",newId());
-	document.getElementById("screen").appendChild(elem);
+
+	var attached = false;
+
+	if(parent != "screen") {	
+		for(var i = 0;i<screen[index].elements.length;i++) {
+			if(screen[index].elements[i].getAttribute("name") == parent) {
+				screen[index].elements[i].appendChild(elem);
+				attached = true;
+				break;
+			}
+		}
+	} else {
+		document.getElementById("screen").appendChild(elem);
+		attached = true;
+	}
+	
+	if(attached == false) {
+		document.getElementById("screen").appendChild(elem);
+	}
+	
 	return elem;
+}
+
+function modElement(source, elemName, parent, attributes) {
+	for(var i = 0;i<screen.length;i++) {
+		if(screen[i].source == source) {
+			for(var k = 0;k<screen[i].elements.length;k++) {
+				if(screen[i].elements[k].getAttribute("name") == elemName) {
+					
+					for (var w = 0;w<attributes.length;w++) {
+						if(attributes[w].name != "left" && attributes[w].name != "top") {
+							screen[i].elements[k].setAttribute(attributes[w].name,attributes[w].value);
+						}
+					}
+
+						for(var e = 0;e<screen[i].elements.length;e++) {
+							if(screen[i].elements[e].getAttribute("name") == parent) {
+								screen[i].elements[e].appendChild(screen[i].elements[k]);
+								break;
+							} else {
+								document.getElementById("screen").appendChild(screen[i].elements[k]);							
+							}
+						}
+					
+					break;
+				}
+			}
+		}
+	}
 }
 
 function newId() {

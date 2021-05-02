@@ -1,0 +1,16 @@
+<<!DOCTYPE html>
+<head>
+</head>
+<body style="background-color:black;">
+<button onclick="start('apps/eyes/eyes.js')">eyes</button>
+<script>
+  function start(p) {
+    window.parent.postMessage({
+      data: {
+        type: "start",
+        path: p
+      }
+    });
+  }
+</script>
+</body>

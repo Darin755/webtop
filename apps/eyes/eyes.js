@@ -6,15 +6,7 @@ postMessage({
 	endingY: 50
 });
 
-postMessage({
-	type: "addElem",
-	elemType: "div",
-	elemName: "eyes_div",
-	parent: "screen",
-	x: 0,
-	y: 0,
-	attributes: []
-});
+
 
 postMessage({
 	type: "addElem",
@@ -23,6 +15,5 @@ postMessage({
 	parent: "eyes_div",
 	x: 0,
 	y: 0,
-	attributes: [{name: "src", value: "apps/eyes/eyes.png"},{name: "alt", value: "eyes"}]
+	attributes: [{name: "src", value: "apps/eyes/eyes.png"},{name: "alt", value: "eyes"},{name: "data-wm", value: true}]
 });
-

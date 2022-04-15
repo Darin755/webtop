@@ -87,6 +87,8 @@ function open(name,url,type) {
 		ifr.setAttribute('id',name+"-iframe");
 		ifr.setAttribute('src',url);
 		ifr.setAttribute('title',name);
+		ifr.setAttribute('width',600);
+		ifr.setAttribute('height',400);
 		ifm.appendChild(ifr); //add iframe
 
 		dragElement(document.getElementById(name)); //make is dragable

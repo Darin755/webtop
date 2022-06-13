@@ -7,7 +7,7 @@ live demo https://darin755.github.io/webtop/
 ## What is Webtop?
  - Webtop is a web desktop enviroment written in HTML, CSS and Javascript. 
  - It is based on iframes that load pages that can comunicate with postMessage. 
- - This version is currently just a proof of concept and the real one is under development in the dev branch. 
+ - This version is currently just a proof of concept.
  ## How is it designed
  - Webtop consists of to sections, Apps and System. The apps are not required and some rely on system. The system is interconected and is the base of which webtop is build on. System is broken down into smaller parts. 
  ### The System

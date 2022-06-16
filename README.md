@@ -1,6 +1,6 @@
 # Webtop- The web desktop
 
-live demo https://darin755.github.io/webtop/
+## [live demo](https://darin755.github.io/webtop/)
 
 <img src="screenshot.png">
 
@@ -16,6 +16,6 @@ live demo https://darin755.github.io/webtop/
  - Define has define.js which defines system functions. There is currently only one function stored there. 
  - Menu stores the webpage that is deplayed in the menu. Taskbar is the webpage and the scripts for the taskbar which is currently required for the wm to function correctly.
 
-
-### Have fun!!
+## This is a project I did a few years back
+## I sometimes will work on it but it is mostly dormant 
 

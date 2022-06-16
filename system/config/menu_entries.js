@@ -3,7 +3,7 @@ var entrys = [
 {name: "open", url:"apps/run/index.html"},
 {name: "duckduckgo", url:"https://www.duckduckgo.com"},
 {name: "calculator", url:"https://www.desmos.com/scientific"},
-{name: "Browser_Linux", url:"https://darin755.github.io/browser-linux/"},
+{name: "Browser Linux", url:"https://darin755.github.io/browser-linux/"},
 {name: "clock", url:"apps/clock/index.html"},
 {name: "terminal", url:"apps/terminal/index.html"},
 {name: "fullscreen", url:"apps/fullscreen/index.html"}//,

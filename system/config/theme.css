@@ -32,23 +32,27 @@ body {
 
 .window {
   position: absolute;
-  background-color: #f1f1f1;
+  background-color: grey;
   text-align: center;
-  border: 1px solid #d3d3d3;
-  
+  border-color: grey;
+  border-width: 0.2px;
 }
 
 .windowheader {
-  padding: 10px;
+  padding: 2px;
   cursor: move;
-  background-color: darkblue;
-  color: #fff;
+  background-color: #000442;
+  color: white;
+  border-color: grey;
+  border-width: 0.2px;
 
 }
 
 .resizeable {
 	resize: both;
 	overflow: auto;
+	border-width: 0.2px;
+	border-color: grey;
 }
 
 .windowButtons {

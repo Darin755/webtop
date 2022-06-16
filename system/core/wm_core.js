@@ -63,7 +63,7 @@ function findName(name) {
 function open(name,url,type) {
 	menu("closeall");
 	var cmd = "";
-	name = findName(name);		
+	name = findName(name);
 	
 	if(type == "window") {
 		var ifm = document.createElement('div'); //div	
